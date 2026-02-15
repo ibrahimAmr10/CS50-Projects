@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="header">
+                <h1>Calculator</h1>
+                <a href="/history" class="history-link">View History</a>
+            </div>
+            
+            <div class="display-container">
+                <div class="display" id="display">0</div>
+            </div>
+            
+            <div class="buttons">
+                <button class="btn btn-clear" onclick="clearDisplay()">C</button>
+                <button class="btn btn-operator" onclick="inputOperator('/')">/</button>
+                <button class="btn btn-operator" onclick="inputOperator('*')">×</button>
+                <button class="btn btn-operator" onclick="inputOperator('-')">−</button>
+                
+                <button class="btn" onclick="inputNumber('7')">7</button>
+                <button class="btn" onclick="inputNumber('8')">8</button>
+                <button class="btn" onclick="inputNumber('9')">9</button>
+                <button class="btn btn-operator" onclick="inputOperator('+')">+</button>
+                
+                <button class="btn" onclick="inputNumber('4')">4</button>
+                <button class="btn" onclick="inputNumber('5')">5</button>
+                <button class="btn" onclick="inputNumber('6')">6</button>
+                <button class="btn btn-operator" onclick="inputOperator('%')">%</button>
+                
+                <button class="btn" onclick="inputNumber('1')">1</button>
+                <button class="btn" onclick="inputNumber('2')">2</button>
+                <button class="btn" onclick="inputNumber('3')">3</button>
+                <button class="btn btn-equals" onclick="calculate()" style="grid-row: span 2;">=</button>
+                
+                <button class="btn btn-zero" onclick="inputNumber('0')" style="grid-column: span 2;">0</button>
+                <button class="btn" onclick="inputDecimal()">.</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="history-container">
+            <div class="header">
+                <h1>Calculation History</h1>
+                <div class="header-buttons">
+                    <a href="/" class="back-link">← Back to Calculator</a>
+                    <button class="clear-history-btn" onclick="clearHistory()">Clear History</button>
+                </div>
+            </div>
+            
+            {% if calculations %}
+                <div class="history-list">
+                    {% for calc in calculations %}
+                        <div class="history-item">
+                            <div class="calculation">
+                                <span class="number">{{ calc[0] }}</span>
+                                <span class="operator">{{ calc[2] }}</span>
+                                <span class="number">{{ calc[1] }}</span>
+                                <span class="equals">=</span>
+                                <span class="result">{{ calc[3] }}</span>
+                            </div>
+                            <div class="timestamp">{{ calc[4] }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-history">
+                    <p>No calculations yet. Start using the calculator to build your history!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script>
+        function clearHistory() {
+            if (confirm('Are you sure you want to clear all history?')) {
+                fetch('/clear-history', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error clearing history');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error clearing history');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
