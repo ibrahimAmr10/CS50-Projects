@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.calculator {
+    background: #2d2d2d;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.history-link, .back-link {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 16px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.history-link:hover, .back-link:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.display-container {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.display {
+    color: #fff;
+    font-size: 48px;
+    text-align: right;
+    font-weight: 300;
+    letter-spacing: 2px;
+    min-height: 60px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    background: #3a3a3a;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    padding: 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background: #4a4a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-operator {
+    background: #667eea;
+    font-weight: 600;
+}
+
+.btn-operator:hover {
+    background: #7c93f0;
+}
+
+.btn-clear {
+    background: #ff6b6b;
+    font-weight: 600;
+}
+
+.btn-clear:hover {
+    background: #ff8787;
+}
+
+.btn-equals {
+    background: #51cf66;
+    font-weight: 600;
+}
+
+.btn-equals:hover {
+    background: #69db7c;
+}
+
+.btn-zero {
+    grid-column: span 2;
+}
+
+/* History Page Styles */
+.history-container {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.history-container .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.history-container h1 {
+    color: #2d2d2d;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.clear-history-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.clear-history-btn:hover {
+    background: #ff8787;
+    transform: translateY(-2px);
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.history-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.calculation {
+    font-size: 24px;
+    color: #2d2d2d;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.number {
+    color: #495057;
+}
+
+.operator {
+    color: #667eea;
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+.equals {
+    color: #adb5bd;
+    margin: 0 10px;
+}
+
+.result {
+    color: #51cf66;
+    font-weight: 600;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: #868e96;
+}
+
+.empty-history {
+    text-align: center;
+    padding: 60px 20px;
+    color: #868e96;
+    font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .calculator {
+        padding: 15px;
+    }
+    
+    .display {
+        font-size: 36px;
+        min-height: 50px;
+    }
+    
+    .btn {
+        font-size: 20px;
+        padding: 20px;
+    }
+    
+    .buttons {
+        gap: 8px;
+    }
+    
+    .history-container {
+        padding: 20px;
+    }
+    
+    .calculation {
+        font-size: 18px;
+    }
+}
