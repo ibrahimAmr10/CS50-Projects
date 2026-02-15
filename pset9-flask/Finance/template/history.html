@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Transaction History - Finance App{% endblock %}
+
+{% block main %}
+    <h2>📜 Transaction History</h2>
+
+    {% if transactions %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Date & Time</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in transactions %}
+                    <tr>
+                        <td><strong>{{ t.symbol }}</strong></td>
+                        <td>{{ t.shares if t.shares > 0 else -t.shares }}</td>
+                        <td>{{ t.price | usd }}</td>
+                        <td>
+                            {% if t.transaction_type == 'BUY' %}
+                                <span style="color: #28a745; font-weight: bold;">BUY</span>
+                            {% else %}
+                                <span style="color: #dc3545; font-weight: bold;">SELL</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ t.timestamp }}</td>
+                        <td>
+                            {% if t.transaction_type == 'BUY' %}
+                                <span style="color: #dc3545;">-{{ (t.shares * t.price) | usd }}</span>
+                            {% else %}
+                                <span style="color: #28a745;">+{{ (-t.shares * t.price) | usd }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="text-align: center; color: #999; padding: 40px;">
+            No transactions yet. <a href="/buy">Make your first trade!</a>
+        </p>
+    {% endif %}
+{% endblock %}

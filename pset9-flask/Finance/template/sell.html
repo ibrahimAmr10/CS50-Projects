@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Sell Stock - Finance App{% endblock %}
+
+{% block main %}
+    <h2>💰 Sell Stock</h2>
+
+    {% if stocks %}
+        <form method="post">
+            <div class="form-group">
+                <label for="symbol">Stock Symbol:</label>
+                <select name="symbol" id="symbol" required>
+                    <option value="">Select a stock to sell</option>
+                    {% for stock in stocks %}
+                        <option value="{{ stock.symbol }}">{{ stock.symbol }} ({{ stock.total }} shares available)</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="shares">Number of Shares:</label>
+                <input name="shares" id="shares" type="number" min="1" placeholder="Enter number of shares to sell" required>
+            </div>
+
+            <button type="submit">Sell Shares</button>
+        </form>
+    {% else %}
+        <p style="text-align: center; color: #999; padding: 40px;">
+            You don't own any stocks to sell. <a href="/buy">Buy some stocks</a> first!
+        </p>
+    {% endif %}
+{% endblock %}

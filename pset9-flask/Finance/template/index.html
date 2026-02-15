@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}Portfolio - Finance App{% endblock %}
+
+{% block main %}
+    <h2>📊 My Portfolio</h2>
+
+    {% if portfolio %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Total Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in portfolio %}
+                    <tr>
+                        <td><strong>{{ stock.symbol }}</strong></td>
+                        <td>{{ stock.name }}</td>
+                        <td>{{ stock.shares }}</td>
+                        <td>{{ stock.price | usd }}</td>
+                        <td><strong>{{ stock.total | usd }}</strong></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="text-align: center; color: #999; padding: 40px;">
+            You don't own any stocks yet. <a href="/buy">Buy some stocks</a> to get started!
+        </p>
+    {% endif %}
+
+    <div class="summary-box">
+        <p>💵 Cash Available: <strong>{{ cash | usd }}</strong></p>
+        <p>💎 Total Portfolio Value: <strong>{{ total | usd }}</strong></p>
+    </div>
+{% endblock %}

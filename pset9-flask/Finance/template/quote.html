@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Get Quote - Finance App{% endblock %}
+
+{% block main %}
+    <h2>📈 Get Stock Quote</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="symbol">Stock Symbol:</label>
+            <input name="symbol" id="symbol" type="text" placeholder="e.g., AAPL, MSFT, TSLA" required autofocus style="text-transform: uppercase;">
+            <small style="color: #999;">Enter a stock ticker symbol to get its current price</small>
+        </div>
+
+        <button type="submit">Get Quote</button>
+    </form>
+{% endblock %}

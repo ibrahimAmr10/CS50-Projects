@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}Buy Stock - Finance App{% endblock %}
+
+{% block main %}
+    <h2>💸 Buy Stock</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="symbol">Stock Symbol:</label>
+            <input name="symbol" id="symbol" type="text" placeholder="e.g., AAPL, GOOGL" required autofocus style="text-transform: uppercase;">
+            <small style="color: #999;">Enter the stock ticker symbol</small>
+        </div>
+
+        <div class="form-group">
+            <label for="shares">Number of Shares:</label>
+            <input name="shares" id="shares" type="number" min="1" placeholder="Enter number of shares" required>
+        </div>
+
+        <button type="submit">Buy Shares</button>
+    </form>
+
+    <p style="margin-top: 20px;">
+        Need to check a stock price first? <a href="/quote">Get a quote</a>
+    </p>
+{% endblock %}

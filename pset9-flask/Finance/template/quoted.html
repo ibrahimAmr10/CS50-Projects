@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block main %}
+    <div class="quote-result">
+        <h2>Quote Result</h2>
+        <div class="stock-info-card">
+            <h3>{{ stock.name }}</h3>
+            <p class="stock-symbol">Symbol: <strong>{{ stock.symbol }}</strong></p>
+            <p class="stock-price">Current Price: <strong class="price-highlight">{{ stock.price | usd }}</strong></p>
+        </div>
+        <div class="action-buttons">
+            <a href="/buy" class="btn-primary">Buy This Stock</a>
+            <a href="/quote" class="btn-secondary">Look Up Another</a>
+        </div>
+    </div>
+{% endblock %}
